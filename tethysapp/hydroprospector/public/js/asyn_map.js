@@ -19,14 +19,14 @@ require(["dojo/dom",
 
             map = new Map("mapDiv", {
               basemap: "streets",
-              center: [111.18, 31.15],
-              zoom: 8
+              center: [110.60, 31.50],
+              zoom: 9
             });
 
             var rasterLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HydroProspectorDEMfile/MapServer");
             map.addLayer(rasterLayer);
 
-            gp = new Geoprocessor("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HydroProspectorSJ/GPServer/Tools");
+            gp = new Geoprocessor("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HPReserviorVolumeSJ/GPServer/Tools");
             gp.setOutputSpatialReference({
               wkid: 102100
             });
@@ -55,14 +55,34 @@ require(["dojo/dom",
               "Point": featureSet,
               "Expression": Expression
             };
-            gp.execute(params, drawViewshed);
-          }
 
-          function drawViewshed(results, messages) {
+            gp.submitJob(params, completeCallback, statusCallback);
+          }
+            function statusCallback(jobInfo) {
+              console.log(jobInfo.jobStatus);
+            }
+            function completeCallback(jobInfo) {
+              console.log("getting data");
+              gp.getResultData(jobInfo.jobId, "watershed_poly", displayWatershed);
+              gp.getResultData(jobInfo.jobId, "Lake_poly", displayLake);
+            }
+
+            function displayWatershed(result, messages) {
+              var simpleLineSymbol = new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+                      new dojo.Color([0,0,205]), 1);
+              var features = result.value.features;
+              for (var f=0, fl=features.length; f<fl; f++) {
+                var feature = features[f];
+                feature.setSymbol(simpleLineSymbol);
+                map.graphics.add(feature);
+              }
+            }
+
+          function displayLake(result, messages) {
             var polySymbol = new SimpleFillSymbol();
             polySymbol.setOutline(new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0, 0, 0, 0.5]), 1));
-            polySymbol.setColor(new Color([255, 127, 0, 0.7]));
-            var features = results[0].value.features;
+            polySymbol.setColor(new Color([0, 245, 255, 0.7]));
+            var features = result.value.features;
             for (var f = 0, fl = features.length; f < fl; f++) {
               var feature = features[f];
               feature.setSymbol(polySymbol);

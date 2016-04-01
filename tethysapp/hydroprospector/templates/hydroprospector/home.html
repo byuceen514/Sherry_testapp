@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">
     <style>
       #mapDiv {
-        height: 800px;
+        height: 500px;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -40,18 +40,14 @@
 
 <div id="mapDiv"></div>
     <div id="info" class="esriSimpleSlider">
-      Click on map to execute HydroProspector.
+      Define dam top elevation, select dam location on one river, then click to execute HydroProspector.
     </div>
-{% endblock %}
-
-{% block app_actions %}
-  <a href="{% url 'my_first_app:home' %}" class="btn btn-default">Back</a>
 {% endblock %}
 
 {% block scripts %}
   {{ block.super }}
   <script src="https://js.arcgis.com/3.16compact/"></script>
-  <script src="{% static 'hydroprospector/js/map.js' %}"></script>
+  <script src="{% static 'hydroprospector/js/asyn_map.js' %}"></script>
 
 {% endblock %}
 
