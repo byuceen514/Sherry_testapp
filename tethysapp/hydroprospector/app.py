@@ -11,7 +11,7 @@ class Hydroprospector(TethysAppBase):
     icon = 'hydroprospector/images/icon.gif'
     package = 'hydroprospector'
     root_url = 'hydroprospector'
-    color = '#3498db'
+    color = '#3399ff'
     description = 'Place a brief description of your app here.'
     enable_feedback = False
     feedback_emails = []

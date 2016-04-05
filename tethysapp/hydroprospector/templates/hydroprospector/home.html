@@ -32,16 +32,27 @@
 
 {% block app_navigation_items %}
 
+  <font size="3"><b>Select one point exactly on the river</b></font>
+  <br>
+
 {% gizmo text_input dam_h %}
+
+{% gizmo button btnCalculate %}
+
+<div id="statusDiv">
+    <p id="volstatus"></p>
+  </div>
+
+<div id="volDiv">
+    <p id="volume"></p>
+  </div>
 
 {% endblock %}
 
 {% block app_content %}
 
 <div id="mapDiv"></div>
-    <div id="info" class="esriSimpleSlider">
-      Define dam height, select dam location exactly on one river, then click it to execute HydroProspector.
-    </div>
+
 {% endblock %}
 
 {% block scripts %}
