@@ -26,7 +26,7 @@ require(["dojo/dom",
             var rasterLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HydroProspectorDEMfile/MapServer");
             map.addLayer(rasterLayer);
 
-            gp = new Geoprocessor("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HPReserviorVolumeSJ/GPServer/Tools");
+            gp = new Geoprocessor("http://geoserver.byu.edu/arcgis/rest/services/SherryJake/HydroProspectorScript/GPServer/HydroProspector");
             gp.setOutputSpatialReference({
               wkid: 102100
             });
@@ -48,12 +48,12 @@ require(["dojo/dom",
             featureSet.features = features;
 
 
-            var dam_ele = document.getElementById("dam_ele").value;
-            var Expression = "myCalc( !Value!,"+ dam_ele +")";
+            //var dam_ele = document.getElementById("dam_ele").value;
+            var dam_h = document.getElementById("dam_h").value;
 
             var params = {
               "Point": featureSet,
-              "Expression": Expression
+              "dam_h": dam_h
             };
 
             gp.submitJob(params, completeCallback, statusCallback);

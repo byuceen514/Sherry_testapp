@@ -8,11 +8,11 @@ def home(request):
     """
     Controller for the app home page.
     """
-    dam_ele = TextInput(display_text='Dam Top Elevation(m):',
-                name="dam_ele",
+    dam_h = TextInput(display_text='Dam Height(m):',
+                name="dam_h",
                 initial="1000",
                 disabled=False,
                 attributes="")
-    context = {'dam_ele': dam_ele}
+    context = {'dam_h': dam_h}
 
     return render(request, 'hydroprospector/home.html', context)
