@@ -1,4 +1,4 @@
-{% extends "my_first_app/base.html" %}
+{% extends "hydroprospector/base.html" %}
 
 {% load tethys_gizmos %}
 
@@ -32,10 +32,14 @@
 
 {% block app_navigation_items %}
 
-  <font size="3"><b>Select one point exactly on the river</b></font>
-  <br>
+  <font size="3"><b>Step1: Click on the map to zoom in, select one point exactly on the river</b></font>
+  <br><br>
+  <font size="3"><b>Step2: </b></font>
 
 {% gizmo text_input dam_h %}
+
+  <font size="3"><b>Step3: Click on this button to run HydroProspector: </b></font>
+  <br>
 
 {% gizmo button btnCalculate %}
 
