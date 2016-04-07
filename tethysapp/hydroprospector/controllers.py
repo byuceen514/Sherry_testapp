@@ -23,3 +23,22 @@ def home(request):
                }
 
     return render(request, 'hydroprospector/home.html', context)
+
+def help_file(request):
+    """
+    Controller for the app help file page.
+    """
+
+    context = {}
+
+    return render(request, 'hydroprospector/help_file.html', context)
+
+
+def technical_file(request):
+    """
+    Controller for the app technical file page.
+    """
+
+    context = {}
+
+    return render(request, 'hydroprospector/technical_file.html', context)

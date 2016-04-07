@@ -111,7 +111,6 @@ require(["dojo/dom",
           }
 
           function displayVolume(result, messages) {
-
             features_volume = result.value.features;
             var volume = features_volume[0].attributes.Volume;
             console.log(volume);

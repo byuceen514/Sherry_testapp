@@ -26,6 +26,14 @@ class Hydroprospector(TethysAppBase):
         url_maps = (UrlMap(name='home',
                            url='hydroprospector',
                            controller='hydroprospector.controllers.home'),
+
+                   UrlMap(name='help_file',
+                            url='hydroprospector/help_file',
+                            controller='hydroprospector.controllers.help_file'),
+
+                    UrlMap(name='technical_file',
+                            url='hydroprospector/technical_file',
+                            controller='hydroprospector.controllers.technical_file'),
         )
 
         return url_maps

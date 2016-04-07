@@ -14,23 +14,18 @@
         padding: 0;
         width: 100%;
       }
-      #info {
-        bottom: 20px;
-        color: #444;
-        height: auto;
-        font-family: arial;
-        left: 20px;
-        margin: 5px;
-        padding: 10px;
-        position: absolute;
-        text-align: left;
-        width: 200px;
-        z-index: 40;
-      }
     </style>
 {% endblock %}
 
 {% block app_navigation_items %}
+
+<button type="button" class="btn btn-default" onclick="window.location='/apps/hydroprospector/help_file/'">User Help File</button>
+
+<button type="button" class="btn btn-default" onclick="window.location='/apps/hydroprospector/technical_file/'">Technical Documentation</button>
+
+<a class="btn btn-default" href="https://github.com/byuceen514/Sherry_testapp" target="_blank">More Info</a>
+
+<br><br>
 
   <font size="3"><b>Step1: Click on the map to zoom in, select one point exactly on the river</b></font>
   <br><br>
